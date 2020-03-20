@@ -10,11 +10,12 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=switch-lan-play
 PKG_VERSION:=0.2.1
 PKG_RELEASE:=1
-PKG_HASH:=7f1299ac567a06acdb683da932b4378192b2954adf7d47b9426d0d728cc446c3
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://codeload.github.com/spacemeowx2/switch-lan-play/tar.gz/v$(PKG_VERSION)?
-PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_VERSION:=v$(PKG_VERSION)
+PKG_SOURCE_URL:=https://github.com/spacemeowx2/switch-lan-play.git
+PKG_MIRROR_HASH:=1c26ca61bc35b35c4900a103edee41d138d64b8d
+#PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
 
 PKG_LICENSE:=GPLv3
 PKG_LICENSE_FILES:=LICENSE.TXT
@@ -36,10 +37,10 @@ define Package/$(PKG_NAME)/description
   Make you and your friends play games like in a LAN.
 endef
 
-define Build/Prepare
-	mkdir -p $(PKG_BUILD_DIR)
-	$(CP) ./$(PKG_NAME)/* $(PKG_BUILD_DIR)/
-endef
+#define Build/Prepare
+#	mkdir -p $(PKG_BUILD_DIR)
+#	$(CP) ./$(PKG_NAME)/* $(PKG_BUILD_DIR)/
+#endef
 
 define Package/$(PKG_NAME)/install
 	$(INSTALL_DIR) $(1)/usr/bin
