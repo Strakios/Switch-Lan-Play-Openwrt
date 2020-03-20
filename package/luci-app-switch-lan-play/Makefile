@@ -1,12 +1,13 @@
 #
 # Copyright (C) 2008-2015 The LuCI Team <luci@lists.subsignal.org>
 # Copyright (C) 2018 @skylovebeauty <skylove@qq.com>
+# Copyright (C) 2020 Kenneth Kasilag <kenneth@kasilag.me>
 #
 
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-app-switch-lan-play
-PKG_VERSION:=0.0.2
+PKG_VERSION:=0.0.3
 PKG_RELEASE:=1
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
@@ -20,7 +21,7 @@ define Package/luci-app-switch-lan-play
 	SECTION:=luci
 	CATEGORY:=LuCI
 	SUBMENU:=3. Applications
-	DEPENDS:= +switch-lan-play +luci-lib-json
+	DEPENDS:= +switch-lan-play
 	TITLE:=luci-app-switch-lan-play
 	PKGARCH:=all
 endef
