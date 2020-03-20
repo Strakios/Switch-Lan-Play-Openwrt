@@ -12,6 +12,7 @@ Switch <------->  Router(lan-play)  <-------------> Server
 ## Usage
 
 The packages in this repository implement the ``switch-lan-play`` client on OpenWrt.
+
 To play with your friends, you and your friends should run the ``switch-lan-play`` client connecting to the **same** server on your PC, and set static IP on your Switch.
 
 ## Building
@@ -21,7 +22,6 @@ To build switch-lan-play for OpenWrt, first add this feed to your ``feeds.conf``
 
 ```
 src-git openwrt-switch-lan-play https://github.com/hurrian/openwrt-switch-lan-play.git
-
 
 $ ./scripts/feeds update -a
 $ ./scripts/feeds install -a
