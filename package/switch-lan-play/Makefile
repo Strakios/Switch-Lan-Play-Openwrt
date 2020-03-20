@@ -29,7 +29,7 @@ define Package/$(PKG_NAME)
 	SECTION:=net
 	CATEGORY:=Network
 	SUBMENU:=Lan-play
-	DEPENDS:=+libpcap +libpthread
+	DEPENDS:=+libpcap +libpthread +libstdcpp +libatomic @!USE_UCLIBC
 	TITLE:=Switch Lan Play Client
 endef
 
