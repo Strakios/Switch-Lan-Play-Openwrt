@@ -48,7 +48,7 @@ define Package/$(PKG_NAME)/install
 	$(INSTALL_DIR) $(1)/etc/config
 	$(INSTALL_CONF) ./files/switchlanplay.config $(1)/etc/config/switchlanplay
 	$(INSTALL_DIR) $(1)/etc
-	$(NSTALL_CONF) ./files/switchlanplay_list.json $(1)/etc/switchlanplay_list.json
+	$(INSTALL_CONF) ./files/switchlanplay_list.json $(1)/etc/switchlanplay_list.json
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/switchlanplay.init $(1)/etc/init.d/switchlanplay
 endef
