@@ -33,6 +33,10 @@ define Package/$(PKG_NAME)
 	TITLE:=Switch Lan Play Client
 endef
 
+define Package/switch-lan-play/conffiles
+/etc/config/switchlanplay
+endef
+
 define Package/$(PKG_NAME)/description
   Make you and your friends play games like in a LAN.
 endef
