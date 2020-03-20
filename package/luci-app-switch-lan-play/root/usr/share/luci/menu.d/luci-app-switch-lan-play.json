@@ -1,0 +1,14 @@
+{
+	"admin/services/switchlanplay": {
+		"title": "Switch LAN Play",
+		"order": 61,
+		"action": {
+			"type": "cbi",
+			"path": "switchlanplay",
+			"post": { "cbi.submit": true }
+		},
+		"depends": {
+			"uci": { "switchlanplay": true }
+		}
+	}
+}
