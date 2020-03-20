@@ -38,15 +38,10 @@ define Build/Compile
 endef
 
 define Package/$(PKG_NAME)/install
-	if [ -d $(PKG_BUILD_DIR)/luasrc ]; then \
-	  $(INSTALL_DIR) $(1)$(LUCI_LIBRARYDIR); \
-	  cp -pR $(PKG_BUILD_DIR)/luasrc/* $(1)$(LUCI_LIBRARYDIR)/; \
-	  $(FIND) $(1)$(LUCI_LIBRARYDIR)/ -type f -name '*.luadoc' | $(XARGS) rm;
-	else true; fi
-	if [ -d $(PKG_BUILD_DIR)/root ]; then \
-	  $(INSTALL_DIR) $(1)/; \
-	  cp -pR $(PKG_BUILD_DIR)/root/* $(1)/; \
-	else true; fi
+	$(INSTALL_DIR) $(1)$(LUCI_LIBRARYDIR)
+	cp -pR $(PKG_BUILD_DIR)/luasrc/* $(1)$(LUCI_LIBRARYDIR)/
+	$(INSTALL_DIR) $(1)
+	cp -pR $(PKG_BUILD_DIR)/root/* $(1)
 endef
 
 define Package/$(PKG_NAME)/postinst
