@@ -11,7 +11,7 @@ local play_on = (luci.sys.call("pidof lan-play > /dev/null"))==0
 local state_msg = " "
 
 if play_on then
-    local now_server = io.popen("ps | grep lan-play | grep -v 'grep' | cut -d ' ' -f 15")
+    local now_server = io.popen("ps | grep lan-play | grep -v 'grep' | cut -d ' ' -f 14")
     local server_info = now_server:read("*all")
     now_server:close()
     state_msg="<b><font color=\"green\">" .. translate("Running") .. "</font></b>"  .. "<br /><br />Current Server Address    " .. server_info
