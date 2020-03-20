@@ -4,8 +4,7 @@
 
 local fs  = require "nixio.fs" 
 local sys = require "luci.sys"
-local net = require "luci.model.network"
-local m, s, p, b
+local m, s
 
 local play_on = (luci.sys.call("pidof lan-play > /dev/null"))==0
 
@@ -29,30 +28,19 @@ s.anonymous = true
 
 s:option(Flag, "enable", translate("Enabled"), translate("Enables or disables the switch-lan-play daemon."))
 
-b = s:option(Value, "ifname", translate("Interface"), translate("Specifies the interface to listen on."))
-b.template = "cbi/network_netlist"
-b.nocreate = true
-b.unspecified = true
+ifname = s:option(ListValue, "ifname", translate("Interfaces"), translate("Specifies the interface to listen on."))
 
-function b.cfgvalue(...)
-	local v = Value.cfgvalue(...)
-	if v then
-		return (net:get_status_by_address(v))
-	end
+for k, v in ipairs(luci.sys.net.devices()) do
+    if v ~= "lo" then
+        ifname:value(v)
+    end
 end
 
-function b.write(self, section, value)
-	local n = net:get_network(value)
-	if n and n:ipaddr() then
-		Value.write(self, section, n:ipaddr())
-	end
-end
-
-relay_server_ip = r:option(Value, "relay_server_ip", translate("relay_server_ip"), translate("Server IP Address (Required)"))
+relay_server_ip = s:option(Value, "relay_server_ip", translate("relay_server_ip"), translate("Server IP Address (Required)"))
     relay_server_ip.datatype="ip4addr"
     relay_server_ip.default='127.0.0.1'
 
-relay_server_port = r:option(Value, "relay_server_port", translate("relay_server_port"),translate("Server Port (Required)"))
+relay_server_port = s:option(Value, "relay_server_port", translate("relay_server_port"),translate("Server Port (Required)"))
     relay_server_port.datatype="port"
     relay_server_port.default=11451
 
