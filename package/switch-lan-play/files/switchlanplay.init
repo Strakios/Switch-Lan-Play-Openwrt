@@ -10,11 +10,16 @@ run_switch_lan_play()
     if [ "$enable" -gt 0 ]; then
 	local ifname
 	config_get ifname $1 ifname
-	local relay_server_ip                                                              
-	local relay_server_port                                                            
-	config_get relay_server_ip $1 relay_server_ip                                      
-	config_get relay_server_port $1 relay_server_port                                                                                                                
-	PROG="lan-play --relay-server-addr $relay_server_ip:$relay_server_port --netif $ifname"
+	local relay_server_host
+	local relay_server_port
+	config_get relay_server_host $1 relay_server_host
+	config_get relay_server_port $1 relay_server_port
+	config_get pmtu $1 pmtu
+	if [ "$pmtu" -gt 0 ]; then
+		PROG="lan-play --relay-server-addr $relay_server_host:$relay_server_port --netif $ifname --pmtu $pmtu"
+	else
+		PROG="lan-play --relay-server-addr $relay_server_host:$relay_server_port --netif $ifname"
+	fi
 	echo "switch-lan-play client started."
     else
 	PROG="lan-play --version"
