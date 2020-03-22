@@ -26,7 +26,17 @@ s = m:section(TypedSection, "switch-lan-play", translate("Settings"))
 s.addremove = false
 s.anonymous = true
 
-s:option(Flag, "enable", translate("Enabled"), translate("Enables or disables the switch-lan-play daemon."))
+e = s:option(Flag, "enable", translate("Enabled"), translate("Enables or disables the switch-lan-play daemon."))
+e.rmempty  = false
+function e.write(self, section, value)
+    if value == "1" then
+        luci.sys.call("/etc/init.d/switchlanplay start >/dev/null")
+    else
+        luci.sys.call("/etc/init.d/switchlanplay stop >/dev/null")
+    end
+    luci.http.write("<script>location.href='./switchlanplay';</script>")
+    return Flag.write(self, section, value)
+end
 
 ifname = s:option(ListValue, "ifname", translate("Interfaces"), translate("Specifies the interface to listen on."))
 
