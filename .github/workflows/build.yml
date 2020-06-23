@@ -25,3 +25,9 @@ jobs:
     - name: Check files
       run: ls
 
+    - name: Save ipk
+      uses: actions/upload-artifact@v1
+      with:
+          name: mt7620
+          path: target.zip
+
