@@ -18,7 +18,7 @@ jobs:
       run: docker build . -t htynkn/openwrt-switch-lan-play:latest
 
     - name: Copy ipk
-      run: docker run -v $PWD:/opt/mount --rm --entrypoint cp htynkn/openwrt-switch-lan-play:latest /sdk/openwrt-sdk/target-ramips-mt7620.zip /opt/mount/target.zip
+      run: docker run -v $PWD:/opt/mount --rm --entrypoint cp htynkn/openwrt-switch-lan-play:latest /sdk/openwrt-sdk/target.zip /opt/mount/target-ramips-mt7620.zip
     - name: Check files
       run: ls
 
@@ -38,7 +38,7 @@ jobs:
       run: docker build --build-arg sdkURL=https://downloads.openwrt.org/releases/19.07.3/targets/ramips/mt7621/openwrt-sdk-19.07.3-ramips-mt7621_gcc-7.5.0_musl.Linux-x86_64.tar.xz . -t htynkn/openwrt-switch-lan-play:latest
 
     - name: Copy ipk
-      run: docker run -v $PWD:/opt/mount --rm --entrypoint cp htynkn/openwrt-switch-lan-play:latest /sdk/openwrt-sdk/target-ramips-mt7621.zip /opt/mount/target.zip
+      run: docker run -v $PWD:/opt/mount --rm --entrypoint cp htynkn/openwrt-switch-lan-play:latest /sdk/openwrt-sdk/target.zip /opt/mount/target-ramips-mt7621.zip
     - name: Check files
       run: ls
 
