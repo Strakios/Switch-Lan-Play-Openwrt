@@ -5,6 +5,7 @@ RUN apt-get update && apt-get install bzip2 file python gcc g++ libncurses5-dev 
 ARG sdkURL=https://downloads.openwrt.org/releases/19.07.3/targets/ramips/mt7620/openwrt-sdk-19.07.3-ramips-mt7620_gcc-7.5.0_musl.Linux-x86_64.tar.xz
 ENV sdkURL ${sdkURL}
 
+RUN echo ${sdkURL}
 RUN wget -q ${sdkURL} -O /sdk.tar.xz && mkdir /sdk && tar -xf /sdk.tar.xz -C /sdk && cp -R /sdk/openwrt-* /sdk/openwrt-sdk
 
 WORKDIR /sdk/openwrt-sdk
