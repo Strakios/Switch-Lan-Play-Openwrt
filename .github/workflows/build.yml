@@ -17,10 +17,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Run a one-line script
-      run: echo Hello, world!
+    - name: Build ipk
+      run: docker build . -t htynkn/openwrt-switch-lan-play:latest
 
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+    - name: Copy ipk
+      run: docker run -v $PWD:/opt/mount --rm --entrypoint cp htynkn/openwrt-switch-lan-play:latest /sdk/openwrt/target.zip /opt/mount/target.zip
+    - name: Check files
+      run: ls
+
