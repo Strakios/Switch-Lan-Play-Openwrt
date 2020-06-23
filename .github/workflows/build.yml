@@ -1,5 +1,3 @@
-
-
 name: CI
 
 
@@ -10,10 +8,9 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  mipsel_24kc:
     runs-on: ubuntu-latest
 
-    
     steps:
     - uses: actions/checkout@v2
 
@@ -21,13 +18,13 @@ jobs:
       run: docker build . -t htynkn/openwrt-switch-lan-play:latest
 
     - name: Copy ipk
-      run: docker run -v $PWD:/opt/mount --rm --entrypoint cp htynkn/openwrt-switch-lan-play:latest /sdk/openwrt/target.zip /opt/mount/target.zip
+      run: docker run -v $PWD:/opt/mount --rm --entrypoint cp htynkn/openwrt-switch-lan-play:latest /sdk/openwrt-sdk/target-mipsel_24kc.zip /opt/mount/target.zip
     - name: Check files
       run: ls
 
     - name: Save ipk
       uses: actions/upload-artifact@v1
       with:
-          name: mt7620
-          path: target.zip
+          name: mipsel_24kc
+          path: target-mipsel_24kc.zip
 
