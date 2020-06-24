@@ -51,3 +51,17 @@ jobs:
       with:
           name: x86_64
           path: target.zip
+  ramips_rt3883:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build ipk
+      run: ./build.sh https://downloads.openwrt.org/releases/19.07.3/targets/ramips/rt3883/openwrt-sdk-19.07.3-ramips-rt3883_gcc-7.5.0_musl.Linux-x86_64.tar.xz ramips_rt3883
+
+    - name: Save ipk
+      uses: actions/upload-artifact@v1
+      with:
+          name: ramips_rt3883
+          path: target.zip
