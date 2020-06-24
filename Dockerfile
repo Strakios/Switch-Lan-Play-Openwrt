@@ -4,6 +4,8 @@ RUN apt-get update && apt-get install bzip2 file python gcc g++ libncurses5-dev 
 
 ARG sdkURL=https://downloads.openwrt.org/releases/19.07.3/targets/ramips/mt7620/openwrt-sdk-19.07.3-ramips-mt7620_gcc-7.5.0_musl.Linux-x86_64.tar.xz
 ENV sdkURL ${sdkURL}
+ARG targetFolder=target
+ENV targetFolder ${targetFolder}
 
 RUN echo ${sdkURL}
 RUN wget -q ${sdkURL} -O /sdk.tar.xz && mkdir /sdk && tar -xf /sdk.tar.xz -C /sdk && cp -R /sdk/openwrt-* /sdk/openwrt-sdk
@@ -19,6 +21,8 @@ RUN echo "CONFIG_PACKAGE_switch-lan-play=y" >> .config-fragment
 
 RUN ./merge_config.sh -m .config .config-fragment
 
-
 RUN make package/luci-app-switch-lan-play/compile && make package/switch-lan-play/compile
-RUN find . | grep lan-play | grep ipk | xargs zip -ur target.zip
+RUN rm -rf ${targetFolder} && mkdir -p ${targetFolder} && find . | grep lan-play | grep ipk | xargs -I {} cp {} ${targetFolder}
+RUN gcc scripts/mkhash.c -o mkhash && mv mkhash /usr/local/bin && chmod +x /usr/local/bin/mkhash
+RUN ./scripts/ipkg-make-index.sh ${targetFolder}
+RUN find ${targetFolder} | xargs zip -ur target.zip
