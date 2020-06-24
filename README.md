@@ -19,6 +19,10 @@ To play with your friends, you and your friends should run the ``switch-lan-play
 Prebuild ipk only available for some arch. If you can't find suitable ipk, please try to open a issue or PR.
 You can also build in your own hardware.
 
+## Custom Feeds
+Choose suitable url with your hardware arch, for example `http://htynkn.github.io/openwrt-switch-lan-play/x86/64`
+add `src/gz switch_lan_play http://htynkn.github.io/openwrt-switch-lan-play/x86/64` to your custom feeds and install with UI.
+
 ## Building
 
 ### Step 1
