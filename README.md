@@ -25,11 +25,7 @@ You can also build in your own hardware.
 To build switch-lan-play for OpenWrt, first add this feed to your ``feeds.conf`` in a fully set-up OpenWrt SDK [(read here on how to setup the OpenWrt SDK)](https://openwrt.org/docs/guide-developer/using_the_sdk):
 
 ```
-<<<<<<< HEAD
 echo "src-git openwrt_switch_lan_play https://github.com/htynkn/openwrt-switch-lan-play.git" >> feeds.conf
-=======
-src-git openwrt_switch_lan_play https://github.com/htynkn/openwrt-switch-lan-play.git
->>>>>>> master
 
 $ ./scripts/feeds update -a
 $ ./scripts/feeds install -a
