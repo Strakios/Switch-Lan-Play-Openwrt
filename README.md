@@ -15,13 +15,21 @@ The packages in this repository implement the ``switch-lan-play`` client on Open
 
 To play with your friends, you and your friends should run the ``switch-lan-play`` client connecting to the **same** server on your PC, and set static IP on your Switch.
 
+## Download
+Prebuild ipk only available for some arch. If you can't find suitable ipk, please try to open a issue or PR.
+You can also build in your own hardware.
+
+## Custom Feeds
+Choose suitable url with your hardware arch, for example `http://htynkn.github.io/openwrt-switch-lan-play/x86/64`
+add `src/gz switch_lan_play http://htynkn.github.io/openwrt-switch-lan-play/x86/64` to your custom feeds and install with UI.
+
 ## Building
 
 ### Step 1
 To build switch-lan-play for OpenWrt, first add this feed to your ``feeds.conf`` in a fully set-up OpenWrt SDK [(read here on how to setup the OpenWrt SDK)](https://openwrt.org/docs/guide-developer/using_the_sdk):
 
 ```
-src-git openwrt_switch_lan_play https://github.com/htynkn/openwrt-switch-lan-play.git
+echo "src-git openwrt_switch_lan_play https://github.com/htynkn/openwrt-switch-lan-play.git" >> feeds.conf
 
 $ ./scripts/feeds update -a
 $ ./scripts/feeds install -a
@@ -52,5 +60,7 @@ opkg install /tmp/luci-app-switch-lan-play-*.ipk
 
 ## License
 Package [luci-app-switch-lan-play](https://github.com/skylovebeauty/luci-app-switch-lan-play) (c) @skylovebeauty
+
 Package [switch-lan-play](https://github.com/spacemeowx2/switch-lan-play) (c) spacemeowx2
+
 Package [openwrt-switch-lan-play](https://github.com/hurrian/openwrt-switch-lan-play) (c) @hurrian
