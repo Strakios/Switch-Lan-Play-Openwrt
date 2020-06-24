@@ -24,5 +24,5 @@ RUN ./merge_config.sh -m .config .config-fragment
 RUN make package/luci-app-switch-lan-play/compile && make package/switch-lan-play/compile
 RUN rm -rf ${targetFolder} && mkdir -p ${targetFolder} && find . | grep lan-play | grep ipk | xargs -I {} cp {} ${targetFolder}
 RUN gcc scripts/mkhash.c -o mkhash && mv mkhash /usr/local/bin && chmod +x /usr/local/bin/mkhash
-RUN ./scripts/ipkg-make-index.sh ${targetFolder}
+RUN cd ${targetFolder} && ./scripts/ipkg-make-index.sh ${targetFolder} >> Packages
 RUN find ${targetFolder} | xargs zip -ur target.zip
