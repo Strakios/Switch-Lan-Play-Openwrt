@@ -19,8 +19,7 @@ INDEX_TEMPLATE = r"""
     <table>
         <tbody>
             <tr>
-                <th valign="top"><img src="${ROOTDIR}images/blank.gif"
-                    alt="[ICO]"></th>
+                <th valign="top"></th>
                 <th><a href="?C=N;O=D">Name</a></th>
                 <th><a href="?C=M;O=A">Last modified</a></th>
                 <th><a href="?C=S;O=A">Size</a></th>
