@@ -9,8 +9,7 @@ function index()
 		return
 	end
 
-	local page
-
-	page = entry({"admin", "services", "switchlanplay"}, cbi("switchlanplay"), _("Switch-Lan-Play"))
-	page.dependent = true
+	entry({"admin", "services", "switchlanplay"}, cbi("switchlanplay"), _("Switch-Lan-Play")).dependent = true
+	
+	entry({"admin", "services", "switchlanplay", "servers"}, cbi("servers"), _("Servers Manage"), 20).leaf = true
 end
