@@ -1,0 +1,28 @@
+Package: luci-app-switch-lan-play
+Version: 0.0.3-1
+Depends: libc, switch-lan-play
+Source: feeds/openwrt_switch_lan_play/package/luci-app-switch-lan-play
+SourceName: luci-app-switch-lan-play
+Section: luci
+Architecture: all
+Installed-Size: 1444
+Filename: luci-app-switch-lan-play_0.0.3-1_all.ipk
+Size: 2262
+SHA256sum: 4b3922ee51c439906148a341bd7d18131dc046c6c35b53f64dfefef1ba5162ea
+Description:  LuCI web-interface for Switch Lan Play Client
+
+Package: switch-lan-play
+Version: 0.2.3-1
+Depends: libc, libpcap1, libpthread, libstdcpp6, libatomic1
+Source: feeds/openwrt_switch_lan_play/package/switch-lan-play
+SourceName: switch-lan-play
+License: GPLv3
+LicenseFiles: LICENSE.TXT
+Section: net
+Architecture: aarch64_generic
+Installed-Size: 218990
+Filename: switch-lan-play_0.2.3-1_aarch64_generic.ipk
+Size: 219167
+SHA256sum: 1a75141f5b9c14ba78237938a2f35fd0e6f5a78a92ac5b2b5ee1552f0bbf6267
+Description:  Make you and your friends play games like in a LAN.
+
