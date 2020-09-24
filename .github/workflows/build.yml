@@ -65,3 +65,17 @@ jobs:
       with:
           name: ramips_rt3883
           path: target.zip
+  armvirt_64:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build ipk
+      run: ./build.sh https://downloads.openwrt.org/releases/19.07.3/targets/armvirt/64/openwrt-sdk-19.07.3-armvirt-64_gcc-7.5.0_musl.Linux-x86_64.tar.xz armvirt_64
+
+    - name: Save ipk
+      uses: actions/upload-artifact@v1
+      with:
+          name: armvirt_64
+          path: target.zip
